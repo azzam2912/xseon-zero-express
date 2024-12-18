@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const mainRoutes = require('./routes/main');
 const quizRoutes = require('./routes/quiz');
+const requestHandler = require('./config/neon_db');
 const cors = require('cors');
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
+app.get('/neon_db', requestHandler);
 app.use('/api', mainRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/quiz', quizRoutes);
