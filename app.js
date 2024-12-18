@@ -12,10 +12,10 @@ const app = express();
 const whitelist = ['http://localhost:3000', 
     'http://localhost:5173', 
     'http://127.0.0.1:5173',
-    'https://xseon-zero.vercel.app/',
-    'http://xseon-zero.vercel.app/',
-    'https://www.xseon-zero.vercel.app/',
-    'http://www.xseon-zero.vercel.app/'];
+    'https://xseon-zero.vercel.app',
+    'http://xseon-zero.vercel.app',
+    'https://www.xseon-zero.vercel.app',
+    'http://www.xseon-zero.vercel.app'];
     
 const corsOptions = {
   origin: function (origin, callback) {
