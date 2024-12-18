@@ -4,11 +4,19 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const mainRoutes = require('./routes/main');
 const quizRoutes = require('./routes/quiz');
+const requestHandler = require('./config/neon_db');
 const cors = require('cors');
 
 const app = express();
 
-const whitelist = ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:5173'];
+const whitelist = ['http://localhost:3000', 
+    'http://localhost:5173', 
+    'http://127.0.0.1:5173',
+    'https://xseon-zero.vercel.app/',
+    'http://xseon-zero.vercel.app/',
+    'https://www.xseon-zero.vercel.app/',
+    'http://www.xseon-zero.vercel.app/'];
+    
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -27,6 +35,7 @@ app.use(bodyParser.json());
 app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
+app.get('/neon_db', requestHandler);
 app.use('/api', mainRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/quiz', quizRoutes);
